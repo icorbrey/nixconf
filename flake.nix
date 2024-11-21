@@ -14,7 +14,7 @@
     homeConfigurations = {
       icorbrey = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [./users/icorbrey.nix]
+        modules = [./home.nix]
       };
     };
   };
