@@ -29,7 +29,7 @@
       ./home/common.nix
     ];
 
-    mneumosyne = [
+    NB-99KZST3 = [
       ./home/common.nix
     ];
   };
