@@ -49,4 +49,8 @@
       ./modules/common.nix
     ];
   };
+
+  nixConfig = {
+    warn-dirty = false;
+  };
 }

@@ -7,13 +7,6 @@
     historyFileSize = 1000000;
     historySize = 1000000;
 
-    shellAliases = {
-      ls = "ls --color=auto";
-      ll = "ls -alF";
-      la = "ls -A";
-      l = "ls -CF";
-    };
-
     initExtra = ''
       # If not running interactively, don't do anything
       case $- in
