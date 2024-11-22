@@ -14,7 +14,9 @@
     devices = devices: {
       nixosConfigurations = builtins.mapAttrs
         (hostname: _: nixpkgs.lib.nixosSystem {
-          modules = [{ networking.hostName = hostname; }];
+          modules = [{ networking.hostName = hostname; }] ++ nixpkgs.lib.optional
+            (builtins.pathExists ./systems/${hostname}.nix)
+            ./systems/${hostname}.nix;
         })
         devices;
       homeConfigurations = builtins.mapAttrs
