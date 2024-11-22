@@ -9,6 +9,7 @@ install hostname=shell('hostname'):
 	@git add .
 	@home-manager switch --flake .#{{hostname}}
 	@git commit -m "Generation #`git log -1 --pretty=%B | tr -d -c 0-9 | awk '{print $1 + 1}'`"
+	@git push origin master
 
 # - Temporarily installs home-manager so that the current flake can be
 #   bootstrapped.
