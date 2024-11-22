@@ -14,7 +14,6 @@
   home.packages = with pkgs; [
     home-manager
     just
-    tree
   ];
   
   home.stateVersion = "24.11";
