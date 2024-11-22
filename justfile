@@ -6,9 +6,7 @@ _default:
 #
 # Install the configuration for the given system.
 install hostname=shell('hostname'):
-	@git diff --quiet --exit-code || { \
-		echo "There are unstaged changes. Run 'git add .' and try again."; \
-		exit 1; }
+	@git add .
 	@home-manager switch --flake .#{{hostname}}
 
 # - Temporarily installs home-manager so that the current flake can be

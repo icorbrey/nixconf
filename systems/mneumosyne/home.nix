@@ -4,6 +4,7 @@
 
   home.packages = with pkgs; [
     helix
+    home-manager
     lazygit
     tree
   ];
