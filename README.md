@@ -34,7 +34,7 @@ Reset to the last committed configuration:
 just reset <hostname>
 ```
 
-> [!info] Note
+> [!TIP]
 > You can omit `<hostname>` if your machine's hostname already matches the
 > desired configuration.
 
