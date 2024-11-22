@@ -26,11 +26,11 @@
     };
   in devices {
     zephyr = [
-      ./home/common.nix
+      ./modules/common.nix
     ];
 
     NB-99KZST3 = [
-      ./home/common.nix
+      ./modules/common.nix
     ];
   };
 }

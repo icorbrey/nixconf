@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 {
+  imports = [
+    ../programs/git.nix
+    ../programs/helix.nix
+    ../programs/lazygit.nix
+  ];
+
   home.homeDirectory = "/home/icorbrey";
   home.username = "icorbrey";
 
@@ -10,12 +16,6 @@
     lazygit
     tree
   ];
-
-  programs = {
-    git = import ../config/git.nix;
-    helix = import ../config/helix.nix;
-    lazygit = import ../config/lazygit.nix;
-  };
 
   home.stateVersion = "24.11";
 }
