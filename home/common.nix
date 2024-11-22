@@ -1,8 +1,10 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   home.homeDirectory = "/home/icorbrey";
   home.username = "icorbrey";
 
   home.packages = with pkgs; [
+    git
     helix
     home-manager
     lazygit
@@ -10,8 +12,9 @@
   ];
 
   programs = {
-    helix = import ../../programs/helix.nix;
-    lazygit = import ../../programs/lazygit.nix;
+    git = import ../config/git.nix;
+    helix = import ../config/helix.nix;
+    lazygit = import ../config/lazygit.nix;
   };
 
   home.stateVersion = "24.11";

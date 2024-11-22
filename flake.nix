@@ -11,14 +11,26 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
 
-    configure = hostname: home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [./systems/${hostname}/home.nix];
+    devices = devices: {
+      nixosConfigurations = builtins.mapAttrs
+        (hostname: _: nixpkgs.lib.nixosSystem {
+          modules = [{ networking.hostName = hostname; }];
+        })
+        devices;
+      homeConfigurations = builtins.mapAttrs
+        (_: modules: home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          inherit modules;
+        })
+        devices;
     };
-  in {
-    homeConfigurations = {
-      mneumosyne = configure "mneumosyne";
-      zephyr = configure "zephyr";
-    };
+  in devices {
+    zephyr = [
+      ./home/common.nix
+    ];
+
+    mneumosyne = [
+      ./home/common.nix
+    ];
   };
 }
