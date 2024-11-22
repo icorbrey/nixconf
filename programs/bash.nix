@@ -28,7 +28,7 @@
       shopt -s checkwinsize
 
       # Allow double star globs
-      shipt -s globstar
+      shopt -s globstar
 
       # Use colors!
       case "$TERM" in
