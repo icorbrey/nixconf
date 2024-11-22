@@ -11,20 +11,34 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
 
-    devices = devices: {
-      nixosConfigurations = builtins.mapAttrs
-        (hostname: _: nixpkgs.lib.nixosSystem {
-          modules = [{ networking.hostName = hostname; }] ++ nixpkgs.lib.optional
-            (builtins.pathExists ./systems/${hostname}.nix)
-            ./systems/${hostname}.nix;
-        })
-        devices;
-      homeConfigurations = builtins.mapAttrs
-        (_: modules: home-manager.lib.homeManagerConfiguration {
+    devices = devices: let
+      forAllDevices = fn: builtins.mapAttrs
+        (hostname: modules:
+          (fn {
+            inherit hostname;
+            inherit modules;
+          }))
+          devices;
+          
+      getOptionalPath = path: nixpkgs.lib.optional
+        (builtins.pathExists path)
+        path;
+    in {
+      devShells.${system} = import ./shell.nix {
+        inherit pkgs;
+      };
+      
+      nixosConfigurations = forAllDevices ({ hostname, ... }: 
+        nixpkgs.lib.nixosSystem {
+          modules = [{ networking.hostName = hostname; }]
+            ++ getOptionalPath ./systems/${hostname}.nix;
+        });
+
+      homeConfigurations = forAllDevices ({ modules, ... }:
+        home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           inherit modules;
-        })
-        devices;
+        });
     };
   in devices {
     zephyr = [

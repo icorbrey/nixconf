@@ -1,13 +1,6 @@
 _default:
 	@just --list
 
-# - Temporarily installs home-manager so that the current flake can be
-#   bootstrapped.
-# - Unnecessary for existing installations.
-#
-# Prep the shell for initial install.
-bootstrap: _bootstrap
-
 # - Defaults to the current hostname.
 # - Will fail if the hostname does not have a valid configuration.
 #
@@ -23,9 +16,6 @@ commit hostname=shell('hostname'): _stage (_switch hostname)  _commit
 
 # Reset to the last committed configuration.
 reset hostname=shell('hostname'): _reset (_switch hostname)
-
-_bootstrap:
-	@nix shell nixpkgs#home-manager nixpkgs#just
 
 _commit:
 	@git commit -m "Generation #`git log -1 --pretty=%B | tr -d -c 0-9 | awk '{print $1 + 1}'`"

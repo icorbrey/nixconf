@@ -13,20 +13,30 @@ Download the repository and bootstrap the shell:
 ```sh
 git clone git@github.com:icorbrey/nixconf.git
 cd nixconf
-nix run nixpkgs#just bootstrap
+nix develop
 ```
 
-Install the configuration for a given machine:
+Install a machine's configuration:
 
 ```sh
 just install <hostname>
 ```
 
-Install the configuration for the current machine:
+Validate a machine's configuration and push to GitHub:
 
 ```sh
-just install
+just commit <hostname>
 ```
+
+Reset to the last committed configuration:
+
+```sh
+just reset <hostname>
+```
+
+> [!info] Note
+> You can omit `<hostname>` if your machine's hostname already matches the
+> desired configuration.
 
 ## License
 

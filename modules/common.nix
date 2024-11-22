@@ -11,12 +11,8 @@
   home.username = "icorbrey";
 
   home.packages = with pkgs; [
-    bash
-    git
-    helix
     home-manager
-    lazygit
-    starship
+    just
     tree
   ];
   
