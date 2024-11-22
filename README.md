@@ -8,10 +8,24 @@ My Nix config.
 
 ## Getting started
 
+Download the repository and bootstrap the shell:
+
 ```sh
-git clone https://github.com/icorbrey/nixconf
+git clone git@github.com:icorbrey/nixconf.git
 cd nixconf
-nix run nixpkgs#just install
+nix run nixpkgs#just bootstrap
+```
+
+Install the configuration for a given machine:
+
+```sh
+just install <hostname>
+```
+
+Install the configuration for the current machine:
+
+```sh
+just install
 ```
 
 ## License
