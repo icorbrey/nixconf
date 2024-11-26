@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ../languages/markdown.nix
+    ../languages/nix.nix
+    ../languages/toml.nix
+    ../languages/yaml.nix
     ../programs/bash.nix
     ../programs/eza.nix
     ../programs/git.nix
@@ -14,11 +18,7 @@
   home.packages = with pkgs; [
     home-manager
     just
-    markdown-oxide
-    nil
-    taplo
     vscode-langservers-extracted
-    yaml-language-server
   ];
   
   home.stateVersion = "24.11";
