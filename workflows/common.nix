@@ -14,6 +14,11 @@
   home.packages = with pkgs; [
     home-manager
     just
+    markdown-oxide
+    nil
+    taplo
+    vscode-langservers-extracted
+    yaml-language-server
   ];
   
   home.stateVersion = "24.11";
