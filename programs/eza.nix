@@ -8,7 +8,7 @@
     ls = "eza";
     ll = "eza -l";
     la = "eza -a";
-    t = "eza --tree";
-    tree = "eza --tree";
+    t = "eza --tree --group-directories-last";
+    tree = "eza --tree -- group-directories-last";
   };
 }
