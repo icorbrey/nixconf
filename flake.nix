@@ -48,6 +48,7 @@
     NB-99KZST3 = [
       ./workflows/common.nix
       ./workflows/containers.nix
+      ./workflows/web-development.nix
     ];
   };
 
