@@ -47,6 +47,7 @@
 
     NB-99KZST3 = [
       ./modules/common.nix
+      ./modules/kubernetes.nix
     ];
   };
 
