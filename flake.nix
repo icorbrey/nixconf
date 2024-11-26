@@ -42,12 +42,12 @@
     };
   in devices {
     zephyr = [
-      ./modules/common.nix
+      ./workflows/common.nix
     ];
 
     NB-99KZST3 = [
-      ./modules/common.nix
-      ./modules/kubernetes.nix
+      ./workflows/common.nix
+      ./workflows/containers.nix
     ];
   };
 
