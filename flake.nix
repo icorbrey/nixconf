@@ -46,6 +46,7 @@
     ];
 
     NB-99KZST3 = [
+      ./workflows/c-sharp.nix
       ./workflows/common.nix
       ./workflows/containers.nix
       ./workflows/web-development.nix
