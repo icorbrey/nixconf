@@ -9,7 +9,12 @@
 
   outputs = { home-manager, nixpkgs, ... }: let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    # pkgs = nixpkgs.legacyPackages.${system};
+
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
 
     devices = devices: let
       forAllDevices = fn: builtins.mapAttrs
@@ -43,6 +48,7 @@
   in devices {
     zephyr = [
       ./workflows/common.nix
+      ./workflows/common-gui.nix
       ./workflows/rust.nix
       ./workflows/web-development.nix
     ];
