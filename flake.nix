@@ -7,7 +7,7 @@
     };
   };
 
-  outputs = { self, home-manager, nixpkgs, ... } @ inputs: let
+  outputs = { home-manager, nixpkgs, ... }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
 
@@ -43,6 +43,8 @@
   in devices {
     zephyr = [
       ./workflows/common.nix
+      ./workflows/rust.nix
+      ./workflows/web-development.nix
     ];
 
     NB-99KZST3 = [
