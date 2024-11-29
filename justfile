@@ -22,6 +22,7 @@ _commit:
 	@git push origin master
 
 _reset:
+	@git fetch origin
 	@git reset --hard origin/master
 
 _stage:
