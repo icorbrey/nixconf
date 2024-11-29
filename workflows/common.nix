@@ -10,6 +10,7 @@
     ../programs/git.nix
     ../programs/helix.nix
     ../programs/starship.nix
+    ../programs/tmux.nix
   ];
 
   home.homeDirectory = "/home/icorbrey";
