@@ -57,6 +57,7 @@
       ./workflows/c-sharp.nix
       ./workflows/common.nix
       ./workflows/containers.nix
+      ./workflows/rust.nix
       ./workflows/web-development.nix
     ];
   };

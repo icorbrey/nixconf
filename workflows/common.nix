@@ -18,6 +18,7 @@
   home.packages = with pkgs; [
     home-manager
     just
+    nom
     vscode-langservers-extracted
   ];
   
