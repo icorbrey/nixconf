@@ -6,6 +6,7 @@
     ../languages/toml.nix
     ../languages/yaml.nix
     ../programs/bash.nix
+    ../programs/bat.nix
     ../programs/eza.nix
     ../programs/git.nix
     ../programs/helix.nix
