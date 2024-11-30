@@ -5,7 +5,10 @@
 
     settings = {
       theme = "catppuccin_mocha";
-      editor.true-color = true;
+      editor = {
+        smart-tab.enable = false;
+        true-color = true;
+      };
     };
   };
 }
