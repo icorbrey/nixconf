@@ -18,6 +18,7 @@
   home.username = "icorbrey";
 
   home.packages = with pkgs; [
+    dmux
     home-manager
     just
     nom

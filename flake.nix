@@ -1,17 +1,28 @@
 {
   inputs = {
+    # dmux <https://github.com/zdcthomas/dmux>
+    dmux.url = "github:zdcthomas/dmux";
+    dmux.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Home Manager <https://github.com/nix-community/home-manager>
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    
+    # Nix packages <https://github.com/NixOS/nixpkgs>
     nixpkgs.url = "github:NixOS/nixpkgs";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { home-manager, nixpkgs, ... }: let
+  outputs = { home-manager, nixpkgs, ... } @ inputs: let
     system = "x86_64-linux";
 
+    overlays = import ./overlays {
+      inherit inputs;
+    };
+
     pkgs = import nixpkgs {
+      inherit overlays;
       inherit system;
+
       config.allowUnfree = true;
     };
 
@@ -23,10 +34,6 @@
             inherit modules;
           }))
           devices;
-          
-      getOptionalPath = path: nixpkgs.lib.optional
-        (builtins.pathExists path)
-        path;
     in {
       devShells.${system} = import ./shell.nix {
         inherit pkgs;
@@ -34,14 +41,21 @@
       
       nixosConfigurations = forAllDevices ({ hostname, ... }: 
         nixpkgs.lib.nixosSystem {
-          modules = [{ networking.hostName = hostname; }]
-            ++ getOptionalPath ./systems/${hostname}.nix;
+          modules = [
+            ({ ... }: {
+              nixpkgs.overlays = overlays;
+            })
+          ];
         });
 
       homeConfigurations = forAllDevices ({ modules, ... }:
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           inherit modules;
+
+          extraSpecialArgs = {
+            inherit inputs;
+          };
         });
     };
   in devices {
