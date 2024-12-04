@@ -13,7 +13,7 @@
   workflows = {
     common.enable = true;
     common-gui.enable = true;
-    # web-development.enable = true;
+    web-development.enable = true;
   };
 
   languages = {
