@@ -79,6 +79,7 @@
         devices;
     };
   in devices [
+    "elysium"
     "NB-99ZKST3"
     "zephyr"
   ];
