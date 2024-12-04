@@ -26,54 +26,62 @@
       config.allowUnfree = true;
     };
 
-    devices = devices: let
-      forAllDevices = fn: builtins.mapAttrs
-        (hostname: modules:
-          (fn {
-            inherit hostname;
-            inherit modules;
-          }))
-          devices;
-    in {
+    utils = rec {
+      type = {
+        language = "languages";
+        package = "packages";
+        workflow = "workflows";
+      };
+      
+      mkModule = config: type: name: obj: {
+        options.${type}.${name}.enable = nixpkgs.lib.mkEnableOption name;
+        config = mkIfEnabled config type name obj;
+      };
+
+      mkLanguage = config: mkModule config type.language;
+      mkPackage = config: mkModule config type.package;
+      mkWorkflow = config: mkModule config type.workflow;
+
+      mkIfEnabled = config: type: name: nixpkgs.lib.mkIf config.${type}.${name}.enable;
+
+      mkIfLanguageEnabled = config: mkIfEnabled config type.language;
+      mkIfPackageEnabled = config: mkIfEnabled config type.package;
+      mkIfWorkflowEnabled = config: mkIfEnabled config type.workflow;
+    };
+
+    forEachDevice = fn: devices:
+      builtins.listToAttrs (builtins.map
+        (name: {
+          inherit name;
+          value = (fn name);
+        })
+        devices);
+
+    devices = devices: {
       devShells.${system} = import ./shell.nix {
         inherit pkgs;
       };
-      
-      nixosConfigurations = forAllDevices ({ hostname, ... }: 
-        nixpkgs.lib.nixosSystem {
-          modules = [
-            ({ ... }: {
-              nixpkgs.overlays = overlays;
-            })
-          ];
-        });
 
-      homeConfigurations = forAllDevices ({ modules, ... }:
-        home-manager.lib.homeManagerConfiguration {
+      nixosConfigurations = forEachDevice
+        (hostname: nixpkgs.lib.nixosSystem {
+          modules = [];
+        })
+        devices;
+
+      homeConfigurations = forEachDevice
+        (hostname: home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          inherit modules;
-
+          modules = [./systems/${hostname}/home.nix];
           extraSpecialArgs = {
-            inherit inputs;
+            inherit inputs utils;
           };
-        });
+        })
+        devices;
     };
-  in devices {
-    zephyr = [
-      ./workflows/common.nix
-      ./workflows/common-gui.nix
-      ./workflows/rust.nix
-      ./workflows/web-development.nix
-    ];
-
-    NB-99KZST3 = [
-      ./workflows/c-sharp.nix
-      ./workflows/common.nix
-      ./workflows/containers.nix
-      ./workflows/rust.nix
-      ./workflows/web-development.nix
-    ];
-  };
+  in devices [
+    "NB-99ZKST3"
+    "zephyr"
+  ];
 
   nixConfig = {
     warn-dirty = false;

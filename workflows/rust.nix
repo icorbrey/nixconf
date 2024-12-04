@@ -1,6 +1,0 @@
-{ ... }:
-{
-  imports = [
-    ../languages/rust.nix
-  ];
-}

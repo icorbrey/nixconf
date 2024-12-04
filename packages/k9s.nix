@@ -1,6 +1,6 @@
 { config, pkgs, utils, ... }:
-  utils.mkLanguage config "toml" {
+  utils.mkPackage config "k9s" {
     home.packages = [
-      pkgs.taplo
+      pkgs.k9s
     ];
   }

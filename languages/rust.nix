@@ -1,9 +1,9 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [
-    bacon
-    cargo
-    rust-analyzer
-    rustc
-  ];
-}
+{ config, pkgs, utils, ... }:
+  utils.mkLanguage config "rust" {
+    home.packages = [
+      pkgs.bacon
+      pkgs.cargo
+      pkgs.rust-analyzer
+      pkgs.rustc
+    ];
+  }

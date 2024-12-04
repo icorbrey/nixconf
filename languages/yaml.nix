@@ -1,6 +1,6 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [
-    yaml-language-server
-  ];
-}
+{ config, pkgs, utils, ... }:
+  utils.mkLanguage config "yaml" {
+    home.packages = [
+      pkgs.yaml-language-server
+    ];
+  }

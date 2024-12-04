@@ -1,0 +1,20 @@
+{
+  imports = [
+    ./bash.nix
+    ./bat.nix
+    ./discord.nix
+    ./dmux.nix
+    ./eza.nix
+    ./firefox.nix
+    ./git.nix
+    ./helix.nix
+    ./home-manager.nix
+    ./just.nix
+    ./k9s.nix
+    ./lazygit.nix
+    ./obsidian.nix
+    ./starship.nix
+    ./tmux.nix
+    ./vlc.nix
+  ];
+}

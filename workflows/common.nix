@@ -1,29 +1,22 @@
-{ pkgs, ... }:
-{
-  imports = [
-    ../languages/markdown.nix
-    ../languages/nix.nix
-    ../languages/toml.nix
-    ../languages/yaml.nix
-    ../programs/bash.nix
-    ../programs/bat.nix
-    ../programs/eza.nix
-    ../programs/git.nix
-    ../programs/helix.nix
-    ../programs/starship.nix
-    ../programs/tmux.nix
-  ];
+{ config, utils, ... }:
+  utils.mkWorkflow config "common" {
+    languages = {
+      markdown.enable = true;
+      nix.enable = true;
+      toml.enable = true;
+      yaml.enable = true;
+    };
 
-  home.homeDirectory = "/home/icorbrey";
-  home.username = "icorbrey";
-
-  home.packages = with pkgs; [
-    dmux
-    home-manager
-    just
-    nom
-    vscode-langservers-extracted
-  ];
-  
-  home.stateVersion = "24.11";
-}
+    packages = {
+      bash.enable = true;
+      bat.enable = true;
+      dmux.enable = true;
+      eza.enable = true;
+      git.enable = true;
+      helix.enable = true;
+      home-manager.enable = true;
+      just.enable = true;
+      starship.enable = true;
+      tmux.enable = true;
+    };
+  }

@@ -1,6 +1,6 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [
-    nil
-  ];
-}
+{ config, pkgs, utils, ... }:
+  utils.mkLanguage config "nix" {
+    home.packages = [
+      pkgs.nil
+    ];
+  }
