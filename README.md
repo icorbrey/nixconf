@@ -38,6 +38,14 @@ just reset <hostname>
 > You can omit `<hostname>` if your machine's hostname already matches the
 > desired configuration.
 
+## Organization
+
+This repository is sorted into **languages**, **packages**, and **workflows**.
+Languages are composed of packages that directly support development using
+those languages. Packages are distinct packages that are separate from language
+packages, and are organized separately. Workflows are sets of languages and/or
+packages to be used together.
+
 ## License
 
 My Nix config is provided under the [MIT license][license]
