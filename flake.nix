@@ -47,9 +47,9 @@
       mkWorkflow = config: mkModule config type.workflow;
 
       mkBrowserExtension = config: name: obj: mkModule config type.browserExtension name {
-        programs.firefox.policies.ExtensionSettings.${obj.firefox.id} = {
-          install_url = obj.firefox.install_url;
-          installation_mode = "force_installed";
+        programs.firefox.policies.ExtensionSettings.${obj.firefox.uuid} = {
+          install_url = "https://addons.mozilla.org/en-US/firefox/downloads/latest/${obj.firefox.shortId}/latest.xpi";
+          installation_mode = "normal_installed";
         };
       };
 
