@@ -8,6 +8,8 @@
     };
 
     browserExtensions = {
+      github-refined.enable = true;
+      obsidian-web-clipper.enable = true;
       onepassword.enable = true;
       sponsorblock.enable = true;
       ublock-origin.enable = true;

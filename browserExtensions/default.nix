@@ -1,5 +1,7 @@
 {
   imports = [
+    ./github-refined.nix
+    ./obsidian-web-clipper.nix
     ./onepassword.nix
     ./sponsorblock.nix
     ./ublock-origin.nix
