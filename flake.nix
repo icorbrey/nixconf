@@ -28,6 +28,7 @@
 
     utils = rec {
       type = {
+        browserExtension = "browserExtensions";
         language = "languages";
         package = "packages";
         workflow = "workflows";
@@ -42,8 +43,16 @@
       mkPackage = config: mkModule config type.package;
       mkWorkflow = config: mkModule config type.workflow;
 
+      mkBrowserExtension = config: name: obj: mkModule config type.browserExtension name {
+        programs.firefox.policies.ExtensionSettings.${obj.firefox.id} = {
+          install_url = obj.firefox.install_url;
+          installation_mode = "force_installed";
+        };
+      };
+
       mkIfEnabled = config: type: name: nixpkgs.lib.mkIf config.${type}.${name}.enable;
 
+      mkIfBrowserExtensionEnabled = config: mkIfEnabled config type.browserExtension;
       mkIfLanguageEnabled = config: mkIfEnabled config type.language;
       mkIfPackageEnabled = config: mkIfEnabled config type.package;
       mkIfWorkflowEnabled = config: mkIfEnabled config type.workflow;

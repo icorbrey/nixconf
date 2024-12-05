@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ../../browserExtensions
     ../../languages
     ../../packages
     ../../workflows
@@ -18,4 +19,8 @@
   languages = {
     rust.enable = true;
   };
+
+  packages = {};
+
+  browserExtensions = {};
 }

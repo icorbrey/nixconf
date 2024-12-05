@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ../../browserExtensions
     ../../languages
     ../../packages
     ../../workflows
