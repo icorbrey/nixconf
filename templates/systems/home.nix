@@ -1,0 +1,20 @@
+{ ... }:
+{
+  imports = [
+    ../../languages
+    ../../packages
+    ../../workflows
+  ];
+
+  home.homeDirectory = "/home/icorbrey";
+  home.username = "icorbrey";
+  home.stateVersion = "24.11";
+
+  workflows = {
+    common.enable = true;
+  };
+
+  languages = {};
+
+  packages = {};
+}

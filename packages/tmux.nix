@@ -8,6 +8,11 @@
       baseIndex = 1;
 
       extraConfig = ''
+        # Rebind Ctrl-B to Ctrl-K for my VSCode addled brain
+        unbind C-b
+        set-option -g prefix C-k
+        bind-key C-k send-prefix
+        
         # Force proper color support
         # See: <https://old.reddit.com/r/tmux/comments/mesrci/tmux_2_doesnt_seem_to_use_256_colors>
         set -g default-terminal "xterm-256color"

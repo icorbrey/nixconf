@@ -5,7 +5,7 @@
     ../../packages
     ../../workflows
   ];
-  
+
   home.homeDirectory = "/home/icorbrey";
   home.username = "icorbrey";
   home.stateVersion = "24.11";
@@ -20,4 +20,6 @@
     c-sharp.enable = true;
     rust.enable = true;
   };
+
+  packages = {};
 }

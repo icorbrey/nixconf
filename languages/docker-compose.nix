@@ -1,6 +1,6 @@
 { config, pkgs, utils, ... }:
   utils.mkLanguage config "docker-compose" {
     home.packages = [
-      pkgs.docker-compose-language-server
+      pkgs.docker-compose-language-service
     ];
   }

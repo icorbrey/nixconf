@@ -80,7 +80,7 @@
     };
   in devices [
     "elysium"
-    "NB-99ZKST3"
+    "NB-99KZST3"
     "zephyr"
   ];
 
