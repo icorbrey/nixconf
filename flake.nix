@@ -10,6 +10,9 @@
     
     # Nix packages <https://github.com/NixOS/nixpkgs>
     nixpkgs.url = "github:NixOS/nixpkgs";
+
+    # Nix User Repository <https://github.com/nix-community/NUR>
+    nur.url = "github:nix-community/NUR";
   };
 
   outputs = { home-manager, nixpkgs, ... } @ inputs: let
