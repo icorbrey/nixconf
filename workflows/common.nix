@@ -17,6 +17,6 @@
       home-manager.enable = true;
       just.enable = true;
       starship.enable = true;
-      tmux.enable = true;
+      zellij.enable = true;
     };
   }

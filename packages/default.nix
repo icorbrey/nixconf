@@ -16,5 +16,6 @@
     ./starship.nix
     ./tmux.nix
     ./vlc.nix
+    ./zellij.nix
   ];
 }
