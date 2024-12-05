@@ -9,7 +9,7 @@ in utils.mkPackage config "firefox" {
     languagePacks = ["en-US"];
 
     policies = {
-      DisableFirefixScreenshots = true;
+      DisableFirefoxScreenshots = true;
       DisableFirefoxStudies = true;
       DisablePocket = true;
       DisableTelemetry = true;
@@ -27,6 +27,19 @@ in utils.mkPackage config "firefox" {
       OverrideFirstRunPage = "";
       OverridePostUpdatePage = "";
       SearchBar = "unified";
+
+      Preferences = {
+        "browser.contentblocking.category" = lock "strict";
+        "browser.newtabpage.activity-stream.feeds.section.topsites" = lock false;
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = lock false;
+        "browser.newtabpage.activity-stream.showWeather" = lock false;
+        "browser.newtabpage.activity-stream.showSponsored" = lock false;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock false;
+        "browser.newtabpage.activity-stream.system.showSponsored" = lock false;
+        "browser.topsites.contile.enabled" = lock false;
+        "extensions.pocket.enabled" = lock false;
+        "extensions.screenshots.disabled" = lock true;
+      };
     };
   };
 }
