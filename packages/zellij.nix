@@ -2,6 +2,7 @@
   shellAliases = {
     z = "zellij";
     za = "zellij attach";
+    zls = "zellij list-sessions";
   };
 in utils.mkPackage config "zellij" {
   home.packages = [
