@@ -16,6 +16,7 @@
       helix.enable = true;
       home-manager.enable = true;
       just.enable = true;
+      lazygit.enable = true;
       starship.enable = true;
       zellij.enable = true;
     };
