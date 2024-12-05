@@ -10,7 +10,6 @@
     packages = {
       bash.enable = true;
       bat.enable = true;
-      dmux.enable = true;
       eza.enable = true;
       git.enable = true;
       helix.enable = true;
