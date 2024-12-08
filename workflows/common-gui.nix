@@ -7,6 +7,10 @@
       vlc.enable = true;
     };
 
+    fonts = {
+      fira-code.enable = true;
+    };
+
     browserExtensions = {
       github-refined.enable = true;
       obsidian-web-clipper.enable = true;

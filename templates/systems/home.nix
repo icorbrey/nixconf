@@ -2,6 +2,7 @@
 {
   imports = [
     ../../browserExtensions
+    ../../fonts
     ../../languages
     ../../packages
     ../../workflows

@@ -32,6 +32,7 @@
     utils = rec {
       type = {
         browserExtension = "browserExtensions";
+        font = "fonts";
         language = "languages";
         package = "packages";
         workflow = "workflows";
@@ -45,6 +46,7 @@
       mkLanguage = config: mkModule config type.language;
       mkPackage = config: mkModule config type.package;
       mkWorkflow = config: mkModule config type.workflow;
+      mkFont = config: mkModule config type.font;
 
       mkBrowserExtension = config: name: obj: mkModule config type.browserExtension name {
         programs.firefox.policies.ExtensionSettings.${obj.firefox.uuid} = {
@@ -56,6 +58,7 @@
       mkIfEnabled = config: type: name: nixpkgs.lib.mkIf config.${type}.${name}.enable;
 
       mkIfBrowserExtensionEnabled = config: mkIfEnabled config type.browserExtension;
+      mkIfFontEnabled = config: mkIfEnabled config type.font;
       mkIfLanguageEnabled = config: mkIfEnabled config type.language;
       mkIfPackageEnabled = config: mkIfEnabled config type.package;
       mkIfWorkflowEnabled = config: mkIfEnabled config type.workflow;
