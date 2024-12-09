@@ -2,6 +2,7 @@
 {
   imports = [
     ../../browserExtensions
+    ../../fonts
     ../../languages
     ../../packages
     ../../workflows
@@ -19,6 +20,7 @@
 
   languages = {
     c-sharp.enable = true;
+    java.enable = true;
     rust.enable = true;
   };
 

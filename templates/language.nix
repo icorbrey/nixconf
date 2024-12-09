@@ -1,4 +1,4 @@
 { config, utils, ... }:
-  utils.mkPackage config "<<NAME>>" {
+  utils.mkLanguage config "<<NAME>>" {
     
   }
